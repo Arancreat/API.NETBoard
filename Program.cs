@@ -1,3 +1,6 @@
+using API.NETBoard.Database;
+using API.NETBoard.Services;
+
 namespace API.NETBoard
 {
     public class Program
@@ -6,6 +9,9 @@ namespace API.NETBoard
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddDbContext<DataContext>();
+            builder.Services.AddScoped<IBoardService, BoardService>();
+            builder.Services.AddScoped<IPostService, PostService>();
             builder.Services.AddControllers().AddNewtonsoftJson();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
