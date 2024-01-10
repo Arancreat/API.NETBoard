@@ -12,6 +12,6 @@ namespace API.NETBoard.Database
 
         public DbSet<Board> Boards { get; set; }
 
-        public DbSet<Post> Messages { get; set; }
+        public DbSet<Post> Posts { get; set; }
     }
 }

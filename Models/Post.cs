@@ -1,13 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.NETBoard.Models
 {
-    [Table("Message")]
+    [Table("Posts"), PrimaryKey(nameof(BoardCode), nameof(Id))]
     public class Post
     {
-        [Key] 
-        public long Id { get; set; }
+        public string BoardCode { get; set; } = string.Empty;
+
+        public long Id { get; set; } = 0;
+
+        public long? ParentId { get; set; }
         
         public string? Subject { get; set; }
         
@@ -17,10 +20,10 @@ namespace API.NETBoard.Models
         
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         
-        public bool IsThread { get; set; } = false;
-        
-        public bool IsVisible { get; set; } = false;
+        public bool IsPinned { get; set; } = false; // for thread
 
-        public bool IsPinned { get; set; } = false;
+        public bool IsLocked { get; set; } = false; // for thread
+
+        public bool IsHidden { get; set; } = false;
     }
 }
