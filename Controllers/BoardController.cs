@@ -1,5 +1,4 @@
 ﻿using API.NETBoard.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.NETBoard.Controllers
@@ -10,8 +9,8 @@ namespace API.NETBoard.Controllers
     {
         private readonly IBoardService _boardService = boardService;
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetAllBoards()
         {
             try
             {

@@ -9,12 +9,12 @@ namespace API.NETBoard.Controllers
     {
         private readonly IPostService _postService = postService;
 
-        [HttpGet("/get-threads")]
-        public async Task<IActionResult> GetThreads()
+        [HttpGet("get-all-ops")]
+        public async Task<IActionResult> GetAllOPs()
         {
             try
             {
-                return Ok(await _postService.GetThreads());
+                return Ok(await _postService.GetAllOPs());
             }
             catch (Exception ex)
             {
@@ -26,12 +26,12 @@ namespace API.NETBoard.Controllers
             }
         }
 
-        [HttpGet("/get-replies/{threadId}")] 
-        public async Task<IActionResult> GetReplies(long threadId)
+        [HttpGet("get-thread/{threadId}")] 
+        public async Task<IActionResult> GetThread(long threadId)
         {
             try
             {
-                return Ok(await _postService.GetReplies(threadId));
+                return Ok(await _postService.GetThread(threadId));
             }
             catch (Exception ex)
             {
